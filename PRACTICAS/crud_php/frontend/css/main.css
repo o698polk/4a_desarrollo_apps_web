@@ -1,0 +1,19 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.text_title_1{
+    font-size: 30px;
+    border: 1px solid #000;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    background-color: rgba(78, 100, 93, 0.714);
+}
+.cont_1{
+    background-color: #777676;
+ border-radius: 20px;
+ border: 2px solid #000;
+ padding: 20px;
+ margin: 20px;
+}
