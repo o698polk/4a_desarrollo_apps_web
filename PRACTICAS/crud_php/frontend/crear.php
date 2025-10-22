@@ -10,7 +10,7 @@
 <body>
     <div class="container cont_1">
         <h1 class="text-center text_title_1">LISTA DE TAREAS</h1>
-        <form action="index.php" method="post">
+        <form action="index.php" method="post" id="form_agregar_tarea">
             <div class="form-group">
                 <label for="tarea">Tarea</label>
                 <input type="text" class="form-control" id="tarea" name="tarea">

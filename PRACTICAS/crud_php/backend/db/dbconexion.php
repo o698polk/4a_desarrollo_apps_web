@@ -19,9 +19,5 @@ class Conexion{
     }
 }
 }
-if(Conexion::conectar()){
-    echo "Conexión exitosa";
-} else {
-    echo "Error de conexión";
-}
+
 ?>
