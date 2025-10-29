@@ -1,0 +1,69 @@
+# ===============================
+# IGNORAR ARCHIVOS GENERADOS (.NET / MAUI / Visual Studio)
+# ===============================
+
+# Compilaciones y temporales
+bin/
+obj/
+[Bb]uild/
+[Ll]ogs/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+*.exe
+*.dll
+*.pdb
+*.cache
+*.log
+*.user
+*.suo
+*.sln.docstates
+
+# Configuración temporal
+*.vs/
+.vscode/
+*.userprefs
+
+# Archivos generados por MAUI / WebView2
+AppHolamundo.exe.WebView2/
+*.WebView2/
+*.WebView2Cache/
+*.WebView2Data/
+*.WebView2Storage/
+*.WebView2Loader/
+*.dat
+*.old
+
+# Publicaciones y empaquetados
+publish/
+*.appx
+*.appxbundle
+*.msix
+*.msixbundle
+*.zip
+*.tar.gz
+
+# Archivos del sistema
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Archivos de dependencias
+node_modules/
+packages/
+*.nupkg
+*.nuspec
+*.vsix
+
+# Archivos de entorno
+.env
+.env.local
+.env.*.local
+
+# ===============================
+# FIN DEL .gitignore
+# ===============================

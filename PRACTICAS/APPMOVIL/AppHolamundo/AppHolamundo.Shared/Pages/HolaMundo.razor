@@ -1,0 +1,50 @@
+﻿@page "/HolaMundo"
+
+<h1>Hola Mundo</h1>
+
+@code {
+
+    int n1=0;
+    int n2=0;
+    int rc = 0;
+    public void calculadora(int x)
+    {
+        if (x == 1)
+        {
+            rc = n1 + n2;
+        } else if (x == 2)
+        {
+            rc = n1 - n2;
+        }
+        else if (x == 3)
+        {
+            rc = n1 * n2;
+        }
+    }
+
+}
+<h3>Calculadora simple</h3>
+
+<div>
+    <label>Número 1:</label>
+    <input type="number" @bind="n1" class="form-control" />
+
+    <label>Número 2:</label>
+    <input type="number" @bind="n2" class="form-control" />
+</div>
+
+
+<button class="btn btn-primary" @onclick="()=>calculadora(1)">
+   Sumar
+</button>
+<button class="btn btn-primary" @onclick="()=>calculadora(2)">
+  Restar
+</button>
+
+<button class="btn btn-primary" @onclick="()=>calculadora(3)">
+  Multiplicar
+</button>
+
+
+
+<h2>Resultado:@rc</h2>
