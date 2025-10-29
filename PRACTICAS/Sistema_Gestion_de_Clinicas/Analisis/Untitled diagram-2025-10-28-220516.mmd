@@ -1,0 +1,146 @@
+classDiagram
+direction LR
+class Roles {
+  +id: bigint
+  +nombre: enum('admin','medico','paciente')
+  +descripcion: string
+  +created_at: datetime
+  +updated_at: datetime
+}
+class Usuario {
+  +id: bigint
+  +nombre: string
+  +email: string
+  +password: string
+  +telefono: string
+  +rol_id:bigint
+  +estado: boolean
+  +created_at: datetime
+  +updated_at: datetime
+}
+class Especialidades {
+  +id: bigint
+  +especialidad: string
+  +descripcion: string
+  +created_at: datetime
+  +updated_at: datetime
+}
+class Medico {
+  +id: bigint
+  +usuario_id: bigint
+  +especialidad_id: bigint
+  +nro_licencia: string
+  +horario_atencion: string
+  +created_at: datetime
+  +updated_at: datetime
+}
+class HorarioMedico{
+  +id: bigint
+  +usuario_id: bigint
+  +horario_atencion: string
+  +created_at: datetime
+  +updated_at: datetime
+}
+class CronogramaMedico{
+  +id: bigint
+  +horariomedico_id: bigint
+  +dia:datetime
+  +hora:datetime
+  +created_at: datetime
+  +updated_at: datetime
+}
+
+class Paciente {
+  +id: bigint
+  +usuario_id: bigint
+  +fecha_nacimiento: date
+  +direccion: string
+  +grupo_sanguineo: string
+  +alergias: text
+  +created_at: datetime
+  +updated_at: datetime
+}
+
+class Cita {
+  +id: bigint
+  +paciente_id: bigint
+  +medico_id: bigint
+  +fecha_cita: datetime
+  +motivo: text
+  +estado: enum('pendiente','confirmada','cancelada','atendida')
+  +pago_estado: enum('pendiente','pagado')
+  +created_at: datetime
+  +updated_at: datetime
+}
+class Pago {
+  +id: bigint
+  +paciente_id: bigint
+  +cita_id: bigint
+  +estado:enum('pago','no_pago','cancelada')
+  +fecha_cita: datetime
+  +motivo: text
+  +metodo_pago: text
+  +created_at: datetime
+  +updated_at: datetime
+}
+class AgendarCita {
+  +id: bigint
+  +paciente_id: bigint
+  +cita_id: bigint
+  +pago_id:bigint
+  +fecha_cita: datetime
+  +created_at: datetime
+  +updated_at: datetime
+}
+
+class HistorialMedico {
+  +id: bigint
+  +paciente_id: bigint
+  +medico_id: bigint
+  +cita_id: bigint
+  +diagnostico: text
+  +tratamiento: text
+  +observaciones: text
+  +fecha_registro: datetime
+}
+
+class Receta {
+  +id: bigint
+  +historial_id: bigint
+  +medicamento: string
+  +dosis: string
+  +frecuencia: string
+  +duracion: string
+}
+
+class Examen {
+  +id: bigint
+  +historial_id: bigint
+  +tipo_examen: string
+  +resultado: text
+  +fecha_examen: datetime
+  +archivo_resultado: string
+}
+
+class Reporte {
+  +id: bigint
+  +tipo: enum('citas','pacientes','medicos','ingresos')
+  +descripcion: text
+  +fecha_generacion: datetime
+  +generado_por: bigint
+}
+
+Roles "1" --> "1" Usuario 
+Usuario "1" --> "1" Medico : es
+Usuario "1" --> "1" Paciente : es
+Especialidades  "1" --> "many" Medico
+Medico "1" --> "many"   HorarioMedico
+HorarioMedico "1" --> "many"   CronogramaMedico
+Paciente "1" --> "many" Cita : seleciona
+Cita "1" --> "1" Pago:genera
+Pago "1" --> "1" AgendarCita:agenda
+Medico "1" --> "many" Cita : atiende
+Cita "1" --> "1" HistorialMedico : genera
+HistorialMedico "1" --> "many" Receta : contiene
+HistorialMedico "1" --> "many" Examen : incluye
+Usuario "1" --> "many" Reporte : genera
